@@ -2,33 +2,48 @@ package y_and_y.com.cout_down_life
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import android.widget.DatePicker
 import kotlinx.android.synthetic.main.activity_set_date.*
-import java.util.*
-
+import org.jetbrains.anko.startActivity
 
 class SetDate : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_set_date)
 
-        dateView.setOnClickListener {
-            showDatePickerDialog(it)
-        }
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val selectDate = sharedPreferences.getString("selectDate", "")!!
 
+        dateView.text = if (selectDate != "") selectDate else getString(R.string.no_date)
+
+        dateView.setOnClickListener {
+            showDatePickerDialog()
+        }
     }
 
     override fun onDateSet(view: DatePicker, year: Int, monthOfYear: Int, dayOfMonth: Int) {
-        val str = String.format(Locale.US, "%d/%d/%d", year, monthOfYear + 1, dayOfMonth)
-        dateView.text = str
+        val month = monthOfYear + 1
+        val selectDate = "$year/$month/$dayOfMonth"
+        dateView.text = selectDate
+
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this).edit()
+        sharedPreferences.apply {
+            putString("selectDate", selectDate)
+            putBoolean("first_boot", false)
+            sharedPreferences.apply()
+        }
+
+        startActivity<RemainingTimeActivity>()
+        finish()
     }
 
-    fun showDatePickerDialog(v: View) {
-        val newFragment = DatePick()
-        newFragment.show(supportFragmentManager, "datePicker")
+    private fun showDatePickerDialog() {
+        DatePick().show(supportFragmentManager, "datePicker")
     }
+
+
 }
 
 
