@@ -23,5 +23,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="@string/no_date" />
+    <TextView
+            android:text="@string/select_your_birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView" android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toTopOf="@+id/dateView" app:layout_constraintStart_toStartOf="@+id/dateView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"/>
 
 </android.support.constraint.ConstraintLayout>
