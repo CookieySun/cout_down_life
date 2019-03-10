@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">cout_down_life</string>
+    <string name="app_name">Your remaining sec</string>
     <string name="no_date">19**/**/**</string>
     <string name="pick_date">Pick Date</string>
     <string name="sec">sec</string>
+    <string name="select_your_birthday">Select Your Birthday</string>
 </resources>
