@@ -1,4 +1,4 @@
-package y_and_y.com.cout_down_life
+package kktyu.com.cout_down_life
 
 import android.app.DatePickerDialog
 import android.app.Dialog
