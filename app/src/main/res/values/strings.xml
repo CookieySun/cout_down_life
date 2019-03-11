@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Your remaining sec</string>
+    <string name="app_name">余命タイマー</string>
     <string name="no_date">19**/**/**</string>
     <string name="pick_date">Pick Date</string>
     <string name="sec">sec</string>
